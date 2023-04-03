@@ -247,6 +247,7 @@ Node* CSLL::max()
 
 void CSLL::deleteAboveAverage()
 {
+    if(empty()) return;
     double average = avg();
     while(head->value > average) removeFromHead();
     Node* prev = head;
