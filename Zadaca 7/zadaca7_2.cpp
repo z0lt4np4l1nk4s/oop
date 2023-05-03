@@ -217,6 +217,7 @@ NodeList NAryTree::BFS(Node* node)
     
 NAryTree& NAryTree::operator=(const NAryTree& tree)
 {
+    for(auto& n : BFS(_root)) delete n;
     _root = copyTree(tree.root());
     return *this;
 }
@@ -239,7 +240,9 @@ int main()
     cout << "Postorder: " << endl;
     T.postorderPrint(T.root()); cout << endl << endl;
 
-    NAryTree T2 = T;
+    NAryTree T2;
+    T2.addRoot(6);
+    T2 = T;
     for(auto& n : T2.BFS(T2.root())) n->setValue(n->element() + 1);
 
     for(auto& n : T.BFS(T.root())) cout << n->element() << " ";

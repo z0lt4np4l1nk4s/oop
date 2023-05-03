@@ -146,6 +146,7 @@ BinaryTree::BinaryTree(const BinaryTree& tree)
 
 BinaryTree& BinaryTree::operator=(const BinaryTree& tree)
 {
+    for(auto& n : BFS(_root)) delete n;
     _root = copyTree(tree.root());
     _size = tree.size();
     return *this;
@@ -180,6 +181,7 @@ int main() {
     BinaryTree T2{T};
 
     BinaryTree T3;
+    T3.addRoot(10);
     T3 = T2;
     T3.expandLeaves(T3.root()->right(), 6, 7);
 
