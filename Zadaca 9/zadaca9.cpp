@@ -118,7 +118,7 @@ Node<K, V>* BST<K, V>::maximum(Node<K, V>* x)
 template <typename K, typename V>
 Node<K, V>* BST<K, V>::successor(Node<K, V>* x)
 {
-    if(x == nullptr) return nullptr;
+    if(x == nullptr || x->right == nullptr) return nullptr;
     x = x->right;
     while(x->left != nullptr) x = x->left;
     return x;
@@ -128,7 +128,7 @@ Node<K, V>* BST<K, V>::successor(Node<K, V>* x)
 template <typename K, typename V>
 Node<K, V>* BST<K, V>::predecessor(Node<K, V>* x)
 {
-    if(x == nullptr) return nullptr;
+    if(x == nullptr || x->left == nullptr) return nullptr;
     x = x->left;
     while(x->right != nullptr) x = x->right;
     return x;
